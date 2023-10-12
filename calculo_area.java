@@ -1,6 +1,6 @@
 import java.util.Locale;
 
-public class Main {
+public class calculo_area {
     public static void main(String[] args) {
 //calculando uma área
         double b, B, h, area;
