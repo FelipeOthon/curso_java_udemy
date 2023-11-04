@@ -4,7 +4,7 @@ public class calculo_diferenca {
     public static void main(String[] args) {
 
 
-        int a, b, c, d, res1, res2, dif;
+        int a, b, c, res1, res2, dif;
 
         Scanner scanner = new Scanner(System.in);
 
@@ -20,8 +20,7 @@ public class calculo_diferenca {
         System.out.println("Digite o terceiro valor: ");
         c = scanner.nextInt();
 
-        System.out.println("Digite o quarto valor: ");
-        d = scanner.nextInt();
+    
         res1 = a + b;
         res2 = c + b;
         dif = res1 - res2;

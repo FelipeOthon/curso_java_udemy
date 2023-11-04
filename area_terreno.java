@@ -1,30 +1,44 @@
+// ø
+import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class area_terreno {
     public static void main(String[] args) {
+        try (Scanner scanner = new Scanner(System.in)) {
+            double width = getUserInput(scanner, "Please enter the width of the land (in meters): ");
+            double length = getUserInput(scanner, "Please enter the length of the land (in meters): ");
+            double pricePerSquareMeter = getUserInput(scanner, "Please enter the price per square meter: ");
 
-        Scanner scanner = new Scanner(System.in);
+            double area = calculateArea(width, length);
+            double price = calculatePrice(area, pricePerSquareMeter);
 
-        System.out.println("Digite a Largura do Terreno: ");
-        double largura = scanner.nextDouble();
-        System.out.println("Digite o Comprimento do Terreno: ");
-        double comprimento = scanner.nextDouble();
-        System.out.println("Digite o valor do Metro Quadrado: ");
-        double metroQuadrado = scanner.nextDouble();
+            displayResults(width, length, pricePerSquareMeter, area, price);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a number.");
+        }
+    }
 
-        double area = largura * comprimento;
-        double preco = area * metroQuadrado;
+    private static double getUserInput(Scanner scanner, String prompt) {
+        System.out.println(prompt);
+        return scanner.nextDouble();
+    }
 
+    private static double calculateArea(double width, double length) {
+        return width * length;
+    }
+
+    private static double calculatePrice(double area, double pricePerSquareMeter) {
+        return area * pricePerSquareMeter;
+    }
+
+    private static void displayResults(double width, double length, double pricePerSquareMeter, double area, double price) {
         Locale.setDefault(Locale.US);
-
-        System.out.printf("A largura do Terreno é %.2f%n", largura);
-        System.out.printf("O comprimento do Terreno é %.2f%n", comprimento);
-        System.out.printf("O valor do metro quadrado do Terreno é R$%.2f%n", metroQuadrado);
-        System.out.printf("A area do terreno é %.2f, e o preco do terreno é R$%.2f  ", area, preco);
-
-        scanner.close();
-
-
+        System.out.printf("The width of the land is %.2f meters.%n", width);
+        System.out.printf("The length of the land is %.2f meters.%n", length);
+        System.out.printf("The price per square meter is $%.2f.%n", pricePerSquareMeter);
+        System.out.printf("The area of the land is %.2f square meters, and the price of the land is $%.2f.%n", area, price);
     }
 }
+
+    

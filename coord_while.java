@@ -25,5 +25,6 @@ public class coord_while {
                x = sc.nextInt();
                y = sc.nextInt();
         }
+        sc.close();
     }
 }
